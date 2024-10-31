@@ -3,7 +3,7 @@
 
 int main() {
     try {
-        Bureaucrat bob("Bob", 1);
+        Bureaucrat bob("Bob", 0);
         std::cout << bob << std::endl;
         bob.incrementGrade(); 
     } catch (const Bureaucrat::GradeTooHighException &e) {

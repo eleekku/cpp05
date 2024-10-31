@@ -20,20 +20,10 @@ Intern &Intern::operator=(const Intern &src) {
 }
 
 AForm *Intern::makeForm(std::string formName, std::string target) {
-	std::pair<std::string, AForm *(Intern::*)(std::string)> formTypes[] = {
-		{"shrubbery creation", &Intern::makeShrubberyCreationForm},
-		{"robotomy request", &Intern::makeRobotomyRequestForm},
-		{"presidential pardon", &Intern::makePresidentialPardonForm}
-	};
-
-	for (const auto &formType : formTypes) {
-		if (formType.first == formName) {
-			return (this->*(formType.second))(target);
-		}
-	}
-
-	std::cerr << "Intern cannot create form: " << formName << std::endl;
-	return NULL;
+    return (formName == "shrubbery creation") ? makeShrubberyCreationForm(target) :
+           (formName == "robotomy request") ? makeRobotomyRequestForm(target) :
+           (formName == "presidential pardon") ? makePresidentialPardonForm(target) :
+		   (std::cerr << "Intern cannot create form: " << formName << std::endl, throw std::invalid_argument("Invalid form name"), nullptr);
 }
 
 AForm *Intern::makeShrubberyCreationForm(std::string target) {
