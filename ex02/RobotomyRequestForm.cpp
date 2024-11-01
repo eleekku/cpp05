@@ -1,6 +1,5 @@
 #include "RobotomyRequestForm.hpp"
-#include <cstdlib>  // For rand() and srand()
-#include <ctime>    // For time()
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request", 72, 45), _target("default") {}
 
